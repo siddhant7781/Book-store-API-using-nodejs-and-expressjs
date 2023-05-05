@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+const router = require('./routes/book-route');
 const port = 5000;
 
 dotenv.config({ path: './config.env' });
@@ -8,10 +9,8 @@ dotenv.config({ path: './config.env' });
 const app = express();
 
 //MIDDLEWARES
-
-app.use('/', (req, res) => {
-    res.end("This is the home page");
-})
+app.use(express.json());
+app.use('/books', router);
 
 //DATABASE CONNECTION
 mongoose.connect(`mongodb+srv://admin:${process.env.DATABASE_PASSWORD}@cluster0.sx1uz1w.mongodb.net/${process.env.DATABASE_NAME}?retryWrites=true&w=majority`)

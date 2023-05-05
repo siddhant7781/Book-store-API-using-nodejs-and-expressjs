@@ -1,4 +1,4 @@
-const mongoose = require('moongoose');
+const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 const BookSchema = new Schema({
@@ -20,6 +20,10 @@ const BookSchema = new Schema({
     },
     available: {
         type: Boolean,
+        required: true
+    },
+    image: {
+        type: String,
         required: true
     }
 })
